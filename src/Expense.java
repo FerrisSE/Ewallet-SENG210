@@ -11,6 +11,9 @@ public class Expense {
 	public void setSource(String source) {
 		this.source = source;
 	}
+	public void setYearlyFrequency(int yearlyFrequency) {
+		this.yearlyfrequency = yearlyFrequency;
+	}
 	public void print() {
 		System.out.println(amount +"--"+ source);
 	}
