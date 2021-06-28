@@ -2,7 +2,8 @@
 public class Wage {
 	String source;
 	double amount;
-	String Month;
+	String month;
 	
 	//should add contructor(s)
+	//testing remote repos
 }
