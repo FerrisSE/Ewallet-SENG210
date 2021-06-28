@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /**
  * This class is used to implement the Expenser interface
  * @author SENG 210 - Joseph Castro, Julie Chambers, Cameron Basham
@@ -90,6 +90,6 @@ public class ExpenseCalculator implements Expenser{
 	}
 
 }
-=======
 
->>>>>>> branch 'master' of https://github.com/jcreate93/Ewallet-SENG210.git
+
+
