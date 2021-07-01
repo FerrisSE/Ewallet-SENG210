@@ -6,13 +6,6 @@
 import java.util.Scanner;
 
 public class Expense {
-<<<<<<< HEAD
-	String source;
-	double amount;
-	int yearlyfrequency; //1 for 1 time or once a year, 12 for monthly or or 24 for biweekly
-
-	
-=======
 	private String source;
 	private double amount;
 	private int yearlyFrequency; //1 for 1 time or once a year, 12 for monthly or or 24 for biweekly
@@ -117,8 +110,4 @@ public class Expense {
 	public void printExpense() {
 		System.out.println(amount +"--"+ source + "--" + yearlyFrequency);
 	}
->>>>>>> refs/heads/issue9AddMonthlyIncome
 }
-
-
-///// Cameron testing collab out.
