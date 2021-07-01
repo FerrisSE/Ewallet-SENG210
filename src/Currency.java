@@ -1,7 +1,7 @@
 
 public class Currency {
-	public double rate = 0;
-	public String name = "";	
+	private double rate = 0;
+	private String name = "";	
 
 	public String getCurrency() {
 		return "Rate: " + this.rate + ", Name: " + this.name;

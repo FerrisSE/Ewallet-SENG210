@@ -20,7 +20,6 @@ import java.util.ArrayList;
  * //updates monthly savings based on latest added income and expenses. This is an internal function not called by the users.  Bonus: what is the most efficient way to call it (when?)? 
  */
 public interface Expenser {
-public User userAtHand= null;
 	
 	public void addExpense (Expense Ex);   // As a user I'd like to add a monthly expense so I can track and report my expenses - 3pts
 	

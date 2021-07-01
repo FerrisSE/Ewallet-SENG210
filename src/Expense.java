@@ -10,8 +10,7 @@ public class Expense {
 	double amount;
 	int yearlyfrequency; //1 for 1 time or once a year, 12 for monthly or or 24 for biweekly
 
-	
+    public String toString() {
+     return "Source: " + source + "Amount: " + amount + "Yearly Frequency: " + yearlyfrequency;
+    }
 }
-
-
-///// Cameron testing collab out.
