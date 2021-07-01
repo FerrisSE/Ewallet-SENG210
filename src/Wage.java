@@ -5,5 +5,4 @@ public class Wage {
 	String month;
 	
 	//should add contructor(s)
-	//testing remote repos
 }
