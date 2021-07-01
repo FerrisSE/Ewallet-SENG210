@@ -4,8 +4,11 @@
 import java.util.ArrayList;
 
 public interface Expenser {
+<<<<<<< HEAD
 	
 public User userAtHand= null;
+=======
+>>>>>>> branch 'master' of https://github.com/jcreate93/Ewallet-SENG210.git
 	
 	public void addExpense (Expense Ex);   // As a user I'd like to add a monthly expense so I can track and report my expenses - 3pts
 	

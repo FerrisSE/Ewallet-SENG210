@@ -106,8 +106,14 @@ public class Expense {
 		return yearlyFrequency;
 	}
 
+
 	
 	public void printExpense() {
 		System.out.println(amount +"--"+ source + "--" + yearlyFrequency);
 	}
-}
+
+    public String toString() {
+     return "Source: " + source + "Amount: " + amount + "Yearly Frequency: " + yearlyFrequency;
+    }
+
+}
