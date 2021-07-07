@@ -23,7 +23,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MyFrame extends JFrame implements ActionListener{
 	//initialize variables
-		String firstName;
+		private String firstName;
+		private String userName;
+		private String password;
 		private JTextField firstNameField;
 		private JTextField userNameField;
 		private JTextField passwordField;
@@ -33,27 +35,16 @@ MyFrame(){
 	
 	
 	//initialize GUI components
-			
 			JLabel firstNameLabel;
 			JButton nextButton;
-			
-			
-			Scanner scnr = new Scanner(System.in);
 			
 			
 			//create JFrame window
 			setTitle("Bank app");
 			this.setSize(420, 360);
 			
-			//jpanel
+		//mainPanel
 			JPanel mainPanel = new JPanel();
-			
-			
-		
-			
-			
-			
-			
 			GridBagLayout gbl_mainPanel = new GridBagLayout();
 			gbl_mainPanel.columnWidths = new int[]{93, 50, 104, 56, 0};
 			gbl_mainPanel.rowHeights = new int[]{19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -62,7 +53,7 @@ MyFrame(){
 			mainPanel.setLayout(gbl_mainPanel);
 			getContentPane().add(mainPanel);
 			
-			//welcomeLabel
+		//welcomeLabel
 			JLabel welcomeLabel = new JLabel("Welcome to Bank App!");
 			welcomeLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 			GridBagConstraints gbc_welcomeLabel = new GridBagConstraints();
@@ -73,7 +64,7 @@ MyFrame(){
 			mainPanel.add(welcomeLabel, gbc_welcomeLabel);
 			
 			
-			//firstNameLabel
+		//firstNameLabel
 			firstNameLabel = new JLabel("Enter your first name: ");
 			GridBagConstraints gbc_firstNameLabel = new GridBagConstraints();
 			gbc_firstNameLabel.anchor = GridBagConstraints.WEST;
@@ -83,7 +74,7 @@ MyFrame(){
 			mainPanel.add(firstNameLabel, gbc_firstNameLabel);
 			
 			
-			//firstNameField
+		//firstNameField
 			firstNameField = new JTextField();
 			GridBagConstraints gbc_firstNameField = new GridBagConstraints();
 			gbc_firstNameField.insets = new Insets(0, 0, 5, 5);
@@ -93,6 +84,7 @@ MyFrame(){
 			mainPanel.add(firstNameField, gbc_firstNameField);
 			firstNameField.setColumns(10);
 			
+		//userNameLabel
 			JLabel userNameLabel = new JLabel("Username:");
 			GridBagConstraints gbc_userNameLabel = new GridBagConstraints();
 			gbc_userNameLabel.anchor = GridBagConstraints.EAST;
@@ -101,6 +93,7 @@ MyFrame(){
 			gbc_userNameLabel.gridy = 4;
 			mainPanel.add(userNameLabel, gbc_userNameLabel);
 			
+		//userNameField
 			userNameField = new JTextField();
 			GridBagConstraints gbc_userNameField = new GridBagConstraints();
 			gbc_userNameField.insets = new Insets(0, 0, 5, 5);
@@ -110,6 +103,7 @@ MyFrame(){
 			mainPanel.add(userNameField, gbc_userNameField);
 			userNameField.setColumns(10);
 			
+		//passwordLabel
 			JLabel passwordLabel = new JLabel("Password:");
 			GridBagConstraints gbc_passwordLabel = new GridBagConstraints();
 			gbc_passwordLabel.anchor = GridBagConstraints.EAST;
@@ -118,6 +112,7 @@ MyFrame(){
 			gbc_passwordLabel.gridy = 5;
 			mainPanel.add(passwordLabel, gbc_passwordLabel);
 			
+		//passwordField
 			passwordField = new JTextField();
 			GridBagConstraints gbc_passwordField = new GridBagConstraints();
 			gbc_passwordField.insets = new Insets(0, 0, 5, 5);
@@ -127,7 +122,7 @@ MyFrame(){
 			mainPanel.add(passwordField, gbc_passwordField);
 			passwordField.setColumns(10);
 			
-			//next button
+		//next button
 			nextButton = new JButton("Next");
 			nextButton.setFocusable(false);
 			nextButton.addActionListener(this);
@@ -139,13 +134,20 @@ MyFrame(){
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setVisible(true);
 			
-			
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		firstName = nameField.getText();
+		
+		firstName = firstNameField.getText();
 		System.out.println(firstName);
+		
+		userName = userNameField.getText();
+		System.out.println(userName);
+		
+		password = passwordField.getText();
+		System.out.println(password);
+		
 		
 		
 	}

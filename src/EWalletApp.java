@@ -3,6 +3,11 @@
  */
 import java.util.Scanner;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+
+
 /*Teacher notes: 
  * this is the app class, has the GUI and create one object of your expense 
  * calculator class. The expense calculator class is the implementation of the Expenser interface 
@@ -16,12 +21,14 @@ public class EWalletApp {
 
 	public static ExpenseCalculator brain = new ExpenseCalculator();
 		
-	
-	
+
 	
 	public static void main(String[] args) {
 		
-		System.out.println("whats is your name");
+		MyFrame mainFrame = new MyFrame();   
+	
+	//user enters name
+		System.out.println("What is your name?");
 		String name = "";
 		Scanner scnr = new Scanner(System.in);
 		
@@ -47,13 +54,13 @@ public class EWalletApp {
 		Expense e1 = new Expense();
 		
 		System.out.println("enter the source");
-		e1.source = scnr.next();
+		//e1.source = scnr.next();
 		
 		System.out.println("enter amount");
-		e1.amount = scnr.nextDouble();
+		//e1.amount = scnr.nextDouble();
 		
 		System.out.println("yearly frequency");
-		e1.yearlyfrequency = scnr.nextInt();
+		//e1.yearlyFrequency = scnr.nextInt();
 		
 		//adding expense
 		brain.addExpense(e1);
