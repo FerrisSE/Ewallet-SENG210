@@ -9,19 +9,6 @@
 public class ExpenseCalculator implements Expenser{
 
 	
-	// Current Rates as of 6/68/2021
-	private double Euro_rate = 0.84;		
-	private double BritishPound_rate = 0.72;
-	private double IndianRupee_rate = 0.74;
-	private double AustralianDollar_rate = 1.32;
-	private double CanadianDollar_rate = 1.23;
-	
-	Currency Dollars = new Currency(1.0, "Dollars");
-	Currency Euros = new Currency(Euro_rate, "Euros");
-	Currency Pounds = new Currency(BritishPound_rate, "Pounds");
-	Currency Rupees = new Currency(IndianRupee_rate, "Rupees");
-	Currency AU_Dollars = new Currency(AustralianDollar_rate, "Australian Dollars");
-	Currency CA_Dollars = new Currency(CanadianDollar_rate, "Canadian Dollars");
 	
 	public User userAtHand;
 	
@@ -75,9 +62,21 @@ public class ExpenseCalculator implements Expenser{
 	}
 
 	@Override
-	public Currency convertForeignCurrency(Currency C, double amount) {
+	public double convertForeignCurrency(String Currency_Name, double amount) {
+		for (Currency c : userAtHand.currencyRates) {
+			if (c.getName().equals(Currency_Name)) {
+				return amount * c.getRate();
+			}
+		}
+		
 		// TODO Auto-generated method stub
-		return null;
+		return -1;
+		// return a error message exception
+	}
+	
+	public double convertForeignCurrency(String Currency_Name) {
+		return convertForeignCurrency (Currency_Name, userAtHand.balance);
+		//return null;
 	}
 
 	@Override

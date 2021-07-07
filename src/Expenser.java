@@ -26,7 +26,7 @@ public User userAtHand= null;
 	
 	public void exportReport(String reportTitle);   // As a user I would like to choose a report and export it as an external file (any type is fine preferences are csv or JSON)
 	
-	public Currency convertForeignCurrency(Currency C, double amount);   //As a user I would like to view my current balance in a different currency Bonus : try to use the same convert function to convert from foreign currency to USD 
+	//public Currency convertForeignCurrency(Currency C, double amount);   //As a user I would like to view my current balance in a different currency Bonus : try to use the same convert function to convert from foreign currency to USD 
 	
 	public boolean loadExpenseFile(String filePath);   //As a user I would like to load multiple expenses from an external file all at once returning true if loaded successfully and false otherwise
 	
@@ -35,6 +35,8 @@ public User userAtHand= null;
 	public int whenCanIBuy(String itemname,double  price);// As a user I would like to provide an item and a price and get an estimate in number of months needed to save up to buy this item. (based on current monthly saving. 
 	
 	public void updateMonthlySavings(); // updates monthly savings based on latest added income and expenses. This is an internal function not called by the users.  Bonus: what is the most efficient way to call it (when?)? 
+
+	double convertForeignCurrency(String Currency_Name, double amount);
 	
 	
 }
