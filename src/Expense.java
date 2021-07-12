@@ -15,9 +15,9 @@ public class Expense {
 	boolean foundLowerCase = false;
 	boolean foundSymbol = false;
 	boolean foundLength = false;
-	boolean foundMonthly = false;
-	boolean foundYearly = false;
-	boolean foundBiweekly = false;
+	public boolean foundMonthly = false;
+	public boolean foundYearly = false;
+	public boolean foundBiweekly = false;
 	
 	
 	

@@ -93,14 +93,32 @@ public class ExpenseCalculator implements Expenser{
 
 	@Override
 	public int whenCanIBuy(String itemname, double price) {
-		// TODO Auto-generated method stub
-		return 0;
+		updateMonthlySavings();
+		int numberOfMonths = (int) (price / userAtHand.getSavings());;
+	   return numberOfMonths;
 	}
 
 	@Override
 	public void updateMonthlySavings() {
-		// TODO Auto-generated method stub
+		double totalMonthlyExpenses = 0;
+		for(Expense i : userAtHand.Spending) {
+			if (i.foundMonthly) {
+				totalMonthlyExpenses += i.getAmount();
+			}
+			if (i.foundBiweekly) {
+				totalMonthlyExpenses += i.getAmount() * 2;
+			}
+	}	
+		double totalMonthlyIncome = 0;
+		double totalIncome = 0;
 		
+		for(Wage i : userAtHand.Income) {
+			totalIncome += i.amount;
+		}
+		totalMonthlyIncome = totalIncome / 12;	
+		
+		double finalSavings = totalMonthlyIncome - totalMonthlyExpenses;
+		userAtHand.setSavings(finalSavings);
 		
 	}
 

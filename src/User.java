@@ -19,7 +19,7 @@ public class User {
 	Currency CA_Dollars = new Currency(CanadianDollar_rate, "Canadian Dollars");
 	
 	
-	private ArrayList <Wage>Income = new ArrayList<Wage>();  // user income sources that user can record or view or search by type or month 
+	public ArrayList <Wage>Income = new ArrayList<Wage>();  // user income sources that user can record or view or search by type or month 
 	public ArrayList <Expense>Spending = new ArrayList<Expense>(); //user's expenses 
 	
 	private double updatedsavings;
@@ -45,9 +45,9 @@ public class User {
 	public void setSavings(double updatedsavings) {
 		this.updatedsavings = monthlysavings;
 	}
-	//public void getSavings() {
-		//return Income - Spending;
-	//}
+	public double getSavings() {
+		return updatedsavings;
+	}
 	public void printExpenses() {
 		System.out.println(this.monthlysavings + " saved this month!");
 		
