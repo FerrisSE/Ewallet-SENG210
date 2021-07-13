@@ -2,7 +2,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class MenuFrame extends LoginFrame{
+public class MenuFrame extends JFrame{
 	
 MenuFrame(){
 	
@@ -11,7 +11,7 @@ MenuFrame(){
 	
 	
 	//create JFrame window
-	setTitle("Bank app");
+	setTitle("Bank app--Main Menu ");
 	this.setSize(420, 360);
 	
 	// mainPanel
