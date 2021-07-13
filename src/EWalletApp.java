@@ -24,11 +24,11 @@ public class EWalletApp {
 
 	
 	public static void main(String[] args) {
+		System.out.println("Login");
+		LoginFrame lFrame = new LoginFrame();
 		
-		MyFrame mainFrame = new MyFrame();   
-	
-	//user enters name
-		System.out.println("What is your name?");
+		
+		
 		String name = "";
 		Scanner scnr = new Scanner(System.in);
 		
