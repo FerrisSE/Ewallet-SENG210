@@ -81,6 +81,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 		this.passwordField = passwordField;
 	}
 
+<<<<<<< HEAD
 	LoginFrame() {
 
 
@@ -128,6 +129,75 @@ public class LoginFrame extends JFrame implements ActionListener {
 		mainPanel.add(userNameField, gbc_userNameField);
 		userNameField.setColumns(10);
 		userName = userNameField.getText();
+=======
+ LoginFrame(){		
+	//initialize GUI components
+	JButton nextButton;
+
+	//create JFrame window
+	setTitle("Bank app");
+	this.setSize(420, 360);
+	
+	// mainPanel
+			JPanel mainPanel = new JPanel();
+			GridBagLayout gbl_mainPanel = new GridBagLayout();
+			gbl_mainPanel.columnWidths = new int[] { 93, 50, 104, 56, 0 };
+			gbl_mainPanel.rowHeights = new int[] { 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+			gbl_mainPanel.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+			gbl_mainPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+					Double.MIN_VALUE };
+			mainPanel.setLayout(gbl_mainPanel);
+			getContentPane().add(mainPanel);
+
+			// welcomeLabel
+			JLabel welcomeLabel = new JLabel("Welcome to Bank App!");
+			welcomeLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+			GridBagConstraints gbc_welcomeLabel = new GridBagConstraints();
+			gbc_welcomeLabel.gridwidth = 2;
+			gbc_welcomeLabel.insets = new Insets(0, 0, 5, 5);
+			gbc_welcomeLabel.gridx = 1;
+			gbc_welcomeLabel.gridy = 1;
+			mainPanel.add(welcomeLabel, gbc_welcomeLabel);
+
+			// userNameLabel
+			JLabel userNameLabel = new JLabel("Username:");
+			GridBagConstraints gbc_userNameLabel = new GridBagConstraints();
+			gbc_userNameLabel.anchor = GridBagConstraints.EAST;
+			gbc_userNameLabel.insets = new Insets(0, 0, 5, 5);
+			gbc_userNameLabel.gridx = 1;
+			gbc_userNameLabel.gridy = 3;
+			mainPanel.add(userNameLabel, gbc_userNameLabel);
+
+			// userNameField
+			userNameField = new JTextField();
+			GridBagConstraints gbc_userNameField = new GridBagConstraints();
+			gbc_userNameField.insets = new Insets(0, 0, 5, 5);
+			gbc_userNameField.fill = GridBagConstraints.HORIZONTAL;
+			gbc_userNameField.gridx = 2;
+			gbc_userNameField.gridy = 3;
+			mainPanel.add(userNameField, gbc_userNameField);
+			userNameField.setColumns(10);
+
+			// passwordLabel
+			JLabel passwordLabel = new JLabel("Password:");
+			GridBagConstraints gbc_passwordLabel = new GridBagConstraints();
+			gbc_passwordLabel.anchor = GridBagConstraints.EAST;
+			gbc_passwordLabel.insets = new Insets(0, 0, 5, 5);
+			gbc_passwordLabel.gridx = 1;
+			gbc_passwordLabel.gridy = 4;
+			mainPanel.add(passwordLabel, gbc_passwordLabel);
+
+			// passwordField
+			passwordField = new JTextField();
+			GridBagConstraints gbc_passwordField = new GridBagConstraints();
+			gbc_passwordField.insets = new Insets(0, 0, 5, 5);
+			gbc_passwordField.fill = GridBagConstraints.HORIZONTAL;
+			gbc_passwordField.gridx = 2;
+			gbc_passwordField.gridy = 4;
+			mainPanel.add(passwordField, gbc_passwordField);
+			passwordField.setColumns(10);
+			password = passwordField.getText();
+>>>>>>> 10ee06e159cd6e2540b985d8ead3ccc185708b58
 
 		// passwordLabel
 		JLabel passwordLabel = new JLabel("Password:");
@@ -163,6 +233,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 
 	}
 
+<<<<<<< HEAD
 	public boolean Validate(String userName, String password) throws IOException {
 
 		// open file and starts verifying username and password against the text file
@@ -202,5 +273,63 @@ public class LoginFrame extends JFrame implements ActionListener {
 		}
 		
 	}
+=======
+ public boolean Validate() throws IOException {
+	
+	 //open file and starts verifying username and password against the text file
+			System.out.println("Opening file... "); //Opening file confidentialInfo.txt.
+		    FileInputStream fileByteStream = new FileInputStream("checkLogin.txt"); //created a new fileInputStream
+		    Scanner inFS = new Scanner(fileByteStream);
+		    
+		    
+		    System.out.println("Verifying your username and password.");
+		    while (inFS.hasNext()) {
+		    	String verifyUsername = inFS.next();
+		    	String verifyPassword = inFS.next();
+		    	 if (userName.equals(verifyUsername) && password.equals(verifyPassword)){
+		    		
+		    		 JOptionPane.showMessageDialog(this,"login success!");
+		    		 return true; 
+		    	 }
+		    	 
+		    }
+		    //only when we are out of the loop, we are sure un/pwd not found
+	    	JOptionPane.showMessageDialog(this,"Username or password not found!");
+	    	System.out.println("Username not found");
+			 //close checkLogin.txt file
+			System.out.println("Closing program...");  
+			fileByteStream.close(); 
+			return false;
+ }
+	
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		
+		userName = userNameField.getText();
+		System.out.println(userName);
+		
+		password = passwordField.getText();
+		System.out.println(password);
+		try {
+			if (Validate()) {
+				
+				//
+				//TODOs login success message box 
+				// run the menuframe
+				//create object of the second frame and hide this frame
+				new MenuFrame();
+			//equivalent to --> MenuFrame mFrame = new MenuFrame();
+			}
+			else {
+				//TODO login failure message box
+				System.out.println(" failed login try again");
+			}
+		} catch (IOException e) {
+			System.out.println(" login file exception");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+>>>>>>> 10ee06e159cd6e2540b985d8ead3ccc185708b58
 
 }

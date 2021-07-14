@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+<<<<<<< HEAD
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.BorderLayout;
@@ -17,11 +18,19 @@ import javax.swing.UIManager;
 public class MenuFrame extends JFrame implements ActionListener {
 
 	// initialize GUI components
+=======
+public class MenuFrame extends JFrame{
+	
+MenuFrame(){
+	
+	//initialize GUI components
+>>>>>>> 10ee06e159cd6e2540b985d8ead3ccc185708b58
 	JButton nextButton;
 	JButton addIncomeButton;
 	JButton addExpenseButton; 
 	private JButton reportsButton;
 	
+<<<<<<< HEAD
 	public MenuFrame() {
 
 		
@@ -102,4 +111,14 @@ public class MenuFrame extends JFrame implements ActionListener {
 			String expenseName = JOptionPane.showInputDialog(expenseFrame,"Enter Expense");
 		}
 	}
+=======
+	
+	//create JFrame window
+	setTitle("Bank app--Main Menu ");
+	this.setSize(420, 360);
+	
+	// mainPanel
+	JPanel mainPanel = new JPanel();
+}
+>>>>>>> 10ee06e159cd6e2540b985d8ead3ccc185708b58
 }
