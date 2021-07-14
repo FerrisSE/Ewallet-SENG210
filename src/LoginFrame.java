@@ -32,7 +32,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 
 	// initialize GUI components
 	JButton nextButton;
-	
+
 	// initialize variables
 	private String userName;
 	private String password;
@@ -81,8 +81,11 @@ public class LoginFrame extends JFrame implements ActionListener {
 		this.passwordField = passwordField;
 	}
 
-	LoginFrame() {
 
+
+	LoginFrame() {
+		// initialize GUI components
+		JButton nextButton;
 
 		// create JFrame window
 		setTitle("Bank app");
@@ -127,7 +130,6 @@ public class LoginFrame extends JFrame implements ActionListener {
 		gbc_userNameField.gridy = 3;
 		mainPanel.add(userNameField, gbc_userNameField);
 		userNameField.setColumns(10);
-		userName = userNameField.getText();
 
 		// passwordLabel
 		JLabel passwordLabel = new JLabel("Password:");
@@ -190,17 +192,75 @@ public class LoginFrame extends JFrame implements ActionListener {
 		return false;
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent event) {
-		if(event.getSource() == nextButton) {
+	/*@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == nextButton) {
 			MenuFrame mFrame = new MenuFrame();
 			userName = userNameField.getText();
 			System.out.println(userName);
 
 			password = passwordField.getText();
 			System.out.println(password);
+		}}*/
+
+	
+
+	public boolean Validate() throws IOException {
+
+		// open file and starts verifying username and password against the text file
+		System.out.println("Opening file... "); // Opening file confidentialInfo.txt.
+		FileInputStream fileByteStream = new FileInputStream("checkLogin.txt"); // created a new fileInputStream
+		Scanner inFS = new Scanner(fileByteStream);
+
+		System.out.println("Verifying your username and password.");
+		while (inFS.hasNext()) {
+			String verifyUsername = inFS.next();
+			String verifyPassword = inFS.next();
+			if (userName.equals(verifyUsername) && password.equals(verifyPassword)) {
+
+				JOptionPane.showMessageDialog(this, "login success!");
+				return true;
+			}
+
 		}
-		
+		// only when we are out of the loop, we are sure un/pwd not found
+		JOptionPane.showMessageDialog(this, "Username or password not found!");
+		System.out.println("Username not found");
+		// close checkLogin.txt file
+		System.out.println("Closing program...");
+		fileByteStream.close();
+		return false;
 	}
 
-}
+	@Override
+	public void actionPerformed(ActionEvent event) {
+		
+		userName = userNameField.getText();
+		System.out.println(userName);
+		
+		password = passwordField.getText();
+		System.out.println(password);
+		try {
+			if (Validate()) {
+				
+				String sucessLogin = JOptionPane.showInputDialog(sucessLogin,"Success!.");
+				//TODOs login success message box 
+
+				// run the menuframe
+				//create object of the second frame and hide this frame
+				new MenuFrame();
+			//equivalent to --> MenuFrame mFrame = new MenuFrame();
+			}
+			else {
+				String failLogin = JOptionPane.showInputDialog(failLogin,"Failed login. Try again.");
+				System.out.println(" failed login try again");
+			}
+		} catch (IOException e) {
+			System.out.println(" login file exception");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}}
+}>>>>>>>10ee 06e159 cd6e2540b985d8ead3ccc185708b58
+
+

@@ -5,7 +5,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.BorderLayout;
@@ -16,13 +15,14 @@ import javax.swing.UIManager;
 
 public class MenuFrame extends JFrame implements ActionListener {
 
-	// initialize GUI components
-	JButton nextButton;
-	JButton addIncomeButton;
-	JButton addExpenseButton; 
-	private JButton reportsButton;
+	//initialize GUI components
+		JButton nextButton;
+		JButton addIncomeButton;
+		JButton addExpenseButton;
+		private JButton reportsButton;
+
 	
-	public MenuFrame() {
+	MenuFrame() {
 
 		
 
@@ -89,7 +89,16 @@ public class MenuFrame extends JFrame implements ActionListener {
 		
 
 		
-	}
+	
+
+	
+
+	//create JFrame window
+		JFrame mainMenu = new JFrame();
+			setTitle("Bank app--Main Menu ");
+			this.setSize(420, 360);
+}
+
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
