@@ -25,22 +25,16 @@ public class EWalletApp {
 	
 	public static void main(String[] args) {
 		System.out.println("Login");
-		LoginFrame lFrame = new LoginFrame();
-	
-		
+		LoginFrame lFrame = new LoginFrame(brain);
 		
 		String name = "";
-		Scanner scnr = new Scanner(System.in);
-		
-		
+		Scanner scnr = new Scanner(System.in);	
 		name = scnr.next();
 		
 		for (User u : AllData) {
 			if (u.username.equals(name)) {
 				brain.userAtHand = u;
 			}
-			
-			
 		}
 		
 		if (brain.userAtHand == null) {
@@ -68,8 +62,6 @@ public class EWalletApp {
 		
 		//adding monthly income
 		//brain.addMonthlyIncome(null);
-	
-	
 	}
 	
 }

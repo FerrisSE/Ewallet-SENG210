@@ -15,27 +15,16 @@ import java.awt.Color;
 import javax.swing.UIManager;
 
 public class MenuFrame extends JFrame implements ActionListener {
-
-
 	//initialize GUI components
-		JButton nextButton;
-		JButton addIncomeButton;
-		JButton addExpenseButton;
-		private JButton reportsButton;
+	JButton nextButton;
+	JButton addIncomeButton;
+	JButton addExpenseButton;
+	JButton reportsButton;
+	ExpenseCalculator brain;;
 
-	
-	MenuFrame() {
+	public MenuFrame(ExpenseCalculator brain) {
 
-
-
-public class MenuFrame extends JFrame{
-
-	
-	public MenuFrame() {
-
-
-		
-
+        this.brain=brain;
 		// create JFrame window
 		setTitle("Bank app");
 		this.setSize(420, 360);
@@ -96,40 +85,60 @@ public class MenuFrame extends JFrame{
 		gbc_reportsButton.gridy = 4;
 		getContentPane().add(reportsButton, gbc_reportsButton);
 		
-		
-
-		
-	
-
-	
-
 	//create JFrame window
-		JFrame mainMenu = new JFrame();
+//		JFrame mainMenu = new JFrame();
 			setTitle("Bank app--Main Menu ");
+			
 			this.setSize(420, 360);
+			this.setVisible(true);
 }
-
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		if(event.getSource() == addIncomeButton) {
 			JFrame incomeFrame = new JFrame();
-			String incomeName = JOptionPane.showInputDialog(incomeFrame,"Enter Income");
+			String incomeName = JOptionPane.showInputDialog(incomeFrame,"Enter Income details separated by space, source, amount,month");
+			
+			//using split to read 3 values from 1 field, alternatively add a Jframe specific to add income and have 3 fields in it to read source, amount, month. 
+			String [] incomeResults = incomeName.split(" "); 
+			
+			Wage w= new Wage();
+			w.source=incomeResults[0];
+			w.amount= Double.parseDouble(incomeResults[1]);
+			w.month=incomeResults[2];
+			
+			brain.addMonthlyIncome(w);
+			
+			System.out.println(incomeName);
 		}
 		if(event.getSource() == addExpenseButton) {
 			JFrame expenseFrame = new JFrame();
-			String expenseName = JOptionPane.showInputDialog(expenseFrame,"Enter Expense");
+			String expenseName = JOptionPane.showInputDialog(expenseFrame,"Enter Expense details spearated by space, source, amount,yealry frequency 1 for once a year 12 for monthly");
+			
+			String [] expenseResults = expenseName.split(" "); 
+			
+			Expense e= new Expense();
+			e.source=expenseResults[0];
+			e.amount= Double.parseDouble(expenseResults[1]);
+			e.yearlyFrequency=Integer.parseInt(expenseResults[2]);
+			
+			
+			brain.addExpense(e);
+			
+			System.out.println(expenseName);
+		
+		}
+		if(event.getSource() == reportsButton) {
+			
+			//TODO add code to print all expenses or income etc etc in PrintFullreport
+		 brain.PrintFullreport();
 		}
 	}
-
 	
 	//create JFrame window
-	setTitle("Bank app--Main Menu ");
-	this.setSize(420, 360);
+	//setTitle("Bank app--Main Menu ");
+	//this.setSize(420, 360);
 	
 	// mainPanel
-	JPanel mainPanel = new JPanel();
-}
->>>>>>> 10ee06e159cd6e2540b985d8ead3ccc185708b58
->>>>>>> 0109ac4fce7a09ebf251b40cb3268656f0658869
+//	JPanel mainPanel = new JPanel();
 }
