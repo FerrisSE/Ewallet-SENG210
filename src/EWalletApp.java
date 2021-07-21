@@ -18,8 +18,8 @@ public class EWalletApp {
 	private static ArrayList<User> AllData = new ArrayList<User>();
 	
 	public void CreateUser(String username, String password) {}
-
-	public static ExpenseCalculator brain = new ExpenseCalculator();
+	public static User u = new User();
+	public static ExpenseCalculator brain = new ExpenseCalculator(u);
 		
 
 	
@@ -27,7 +27,7 @@ public class EWalletApp {
 		System.out.println("Login");
 		LoginFrame lFrame = new LoginFrame(brain);
 		
-		String name = "";
+		/*String name = "";
 		Scanner scnr = new Scanner(System.in);	
 		name = scnr.next();
 		
@@ -63,5 +63,7 @@ public class EWalletApp {
 		//adding monthly income
 		//brain.addMonthlyIncome(null);
 	}
+	*/
 	
+}
 }

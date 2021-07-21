@@ -16,11 +16,12 @@ import javax.swing.UIManager;
 
 public class MenuFrame extends JFrame implements ActionListener {
 	//initialize GUI components
+	JButton ExpenseReportButton;
 	JButton nextButton;
 	JButton addIncomeButton;
 	JButton addExpenseButton;
 	JButton reportsButton;
-	ExpenseCalculator brain;;
+	ExpenseCalculator brain;
 
 	public MenuFrame(ExpenseCalculator brain) {
 
@@ -49,6 +50,17 @@ public class MenuFrame extends JFrame implements ActionListener {
 		JLabel welcomeLabel = new JLabel("Welcome!");
 		mainPanel.add(welcomeLabel);
 		
+		//Report Expense Button
+		ExpenseReportButton = new JButton("Print Expense Report");
+		ExpenseReportButton.setBackground(UIManager.getColor("Button.disabledForeground"));
+		ExpenseReportButton.setForeground(UIManager.getColor("CheckBox.foreground"));
+		ExpenseReportButton.addActionListener(this);
+		GridBagConstraints gbc_ExpenseReportButton = new GridBagConstraints();
+		gbc_ExpenseReportButton.insets = new Insets(0, 0, 5, 0);
+		gbc_ExpenseReportButton.gridx = 0;
+		gbc_ExpenseReportButton.gridy = 5;
+		getContentPane().add(ExpenseReportButton, gbc_ExpenseReportButton);
+		
 		//Add income button
 		addIncomeButton = new JButton("Add income");
 		addIncomeButton.setBackground(UIManager.getColor("Button.disabledForeground"));
@@ -63,10 +75,8 @@ public class MenuFrame extends JFrame implements ActionListener {
 		//add expense button
 		addExpenseButton = new JButton("Add Expense");
 		addExpenseButton.setBackground(UIManager.getColor("Button.darkShadow"));
-		addExpenseButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		addExpenseButton.addActionListener(this);
+		
 		GridBagConstraints gbc_addExpenseButton = new GridBagConstraints();
 		gbc_addExpenseButton.insets = new Insets(0, 0, 5, 0);
 		gbc_addExpenseButton.gridx = 0;
@@ -76,14 +86,14 @@ public class MenuFrame extends JFrame implements ActionListener {
 		reportsButton = new JButton("Reports");
 		reportsButton.setBackground(UIManager.getColor("Button.disabledForeground"));
 		reportsButton.setForeground(UIManager.getColor("Button.disabledForeground"));
-		reportsButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		reportsButton.addActionListener(this);
+		
 		GridBagConstraints gbc_reportsButton = new GridBagConstraints();
 		gbc_reportsButton.gridx = 0;
 		gbc_reportsButton.gridy = 4;
 		getContentPane().add(reportsButton, gbc_reportsButton);
+		
+		
 		
 	//create JFrame window
 //		JFrame mainMenu = new JFrame();
@@ -133,6 +143,11 @@ public class MenuFrame extends JFrame implements ActionListener {
 			//TODO add code to print all expenses or income etc etc in PrintFullreport
 		 brain.PrintFullreport();
 		}
+		
+		if(event.getSource() == ExpenseReportButton) {
+			brain.PrintExpensereport();
+		}
+		
 	}
 	
 	//create JFrame window
