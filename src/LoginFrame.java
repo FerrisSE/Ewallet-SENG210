@@ -242,25 +242,28 @@ public class LoginFrame extends JFrame implements ActionListener {
 		System.out.println(password);
 		try {
 			if (Validate()) {
-				
-				String sucessLogin = JOptionPane.showInputDialog(sucessLogin,"Success!.");
+				String sucessLogin = null;
+				sucessLogin = JOptionPane.showInputDialog(sucessLogin,"Success!.");
 				//TODOs login success message box 
-
+				
 				// run the menuframe
 				//create object of the second frame and hide this frame
+				
 				new MenuFrame();
+				this.setVisible(false);
+				
 			//equivalent to --> MenuFrame mFrame = new MenuFrame();
 			}
 			else {
-				String failLogin = JOptionPane.showInputDialog(failLogin,"Failed login. Try again.");
+				String failLogin = null;
+				failLogin = JOptionPane.showInputDialog(failLogin,"Failed login. Try again.");
 				System.out.println(" failed login try again");
 			}
 		} catch (IOException e) {
 			System.out.println(" login file exception");
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}}
-}>>>>>>>10ee 06e159 cd6e2540b985d8ead3ccc185708b58
+	}
+}
 
 

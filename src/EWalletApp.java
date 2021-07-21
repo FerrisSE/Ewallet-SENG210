@@ -26,7 +26,7 @@ public class EWalletApp {
 	public static void main(String[] args) {
 		System.out.println("Login");
 		LoginFrame lFrame = new LoginFrame();
-		MenuFrame mFrame = new MenuFrame();
+	
 		
 		
 		String name = "";
