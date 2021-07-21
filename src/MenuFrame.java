@@ -5,6 +5,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+<<<<<<< HEAD
+=======
+
+<<<<<<< HEAD
+>>>>>>> 0109ac4fce7a09ebf251b40cb3268656f0658869
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.BorderLayout;
@@ -15,6 +20,7 @@ import javax.swing.UIManager;
 
 public class MenuFrame extends JFrame implements ActionListener {
 
+<<<<<<< HEAD
 	//initialize GUI components
 		JButton nextButton;
 		JButton addIncomeButton;
@@ -23,6 +29,23 @@ public class MenuFrame extends JFrame implements ActionListener {
 
 	
 	MenuFrame() {
+=======
+	// initialize GUI components
+=======
+public class MenuFrame extends JFrame{
+	
+MenuFrame(){
+	
+	//initialize GUI components
+>>>>>>> 10ee06e159cd6e2540b985d8ead3ccc185708b58
+	JButton nextButton;
+	JButton addIncomeButton;
+	JButton addExpenseButton; 
+	private JButton reportsButton;
+	
+<<<<<<< HEAD
+	public MenuFrame() {
+>>>>>>> 0109ac4fce7a09ebf251b40cb3268656f0658869
 
 		
 
@@ -111,4 +134,17 @@ public class MenuFrame extends JFrame implements ActionListener {
 			String expenseName = JOptionPane.showInputDialog(expenseFrame,"Enter Expense");
 		}
 	}
+<<<<<<< HEAD
+=======
+=======
+	
+	//create JFrame window
+	setTitle("Bank app--Main Menu ");
+	this.setSize(420, 360);
+	
+	// mainPanel
+	JPanel mainPanel = new JPanel();
+}
+>>>>>>> 10ee06e159cd6e2540b985d8ead3ccc185708b58
+>>>>>>> 0109ac4fce7a09ebf251b40cb3268656f0658869
 }
