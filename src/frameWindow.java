@@ -31,6 +31,17 @@ private static JLabel convertToLabel;
 private static JLabel currResultLabel;
 private static JComboBox currSelectOne;
 private static JComboBox currSelectTwo;
+//income 
+private static JLabel incomeLabel;
+private static JTextField incomeText = new JTextField();
+private static JComboBox incomeType;
+private static JComboBox incomemonth;
+private static JTextField incomeyear = new JTextField();
+private static JLabel moneylabel;
+private static JLabel inlabel;
+private static JButton enterIncome = new JButton();
+
+
 
 
 	frameWindow() {
@@ -75,13 +86,6 @@ currencyConv.setBounds(250, 450, 165, 70);
 currencyConv.setFocusable(false);
 currencyConv.addActionListener(this);
 currencyConv.setVisible(true);
-
-
-
-
-
-
-
 
 
 //currency Conversion window
@@ -142,6 +146,70 @@ convertButton.setVisible(false);
 
 
 
+//income window
+homeButton = new JButton("Home");
+homeButton.setBounds(170, 30, 120, 70);
+homeButton.setFocusable(false);
+homeButton.addActionListener(this);
+homeButton.setVisible(false);
+
+incomeLabel = new JLabel();
+incomeLabel.setText("Please enter your income amount:");
+incomeLabel.setBounds(85, 350, 600, 25);
+incomeLabel.setFont(new Font("Arial", Font.PLAIN, 17));
+incomeLabel.setForeground(Color.white);
+incomeLabel.setVisible(false);
+
+inlabel = new JLabel();
+inlabel.setText("Type:");
+inlabel.setBounds(40, 390, 30, 25);
+inlabel.setFont(new Font("Arial", Font.PLAIN, 12));
+inlabel.setForeground(Color.white);
+inlabel.setVisible(false);
+
+
+enterIncome = new JButton("Enter");
+enterIncome.setBounds(175, 430, 100, 30);
+enterIncome.setFocusable(false);
+enterIncome.addActionListener(this);
+enterIncome.setVisible(false);
+
+String[] incometypeList = {"Primary", "Secondary", "Other",};
+incomeType = new JComboBox(incometypeList);
+incomeType.setBounds(85, 390, 80, 25);
+incomeType.setVisible(false);
+
+String[] incomemonths = {"01","02","03","04","05","06","07","08","09","10","11","12"};
+incomemonth = new JComboBox(incomemonths);
+incomemonth.setBounds(305, 390, 40, 25);
+incomemonth.setVisible(false);
+incomemonth.setSelectedIndex(0);
+
+incomeyear.setPreferredSize(new Dimension(20, 30));
+incomeyear.setCaretColor(Color.black); //cursor color
+incomeyear.setText("2023"); //starting text
+incomeyear.setEditable(true); // make it so year is limited to only four charecters 
+incomeyear.setBounds(360, 390, 50, 25);
+incomeyear.setVisible(false);
+
+moneylabel = new JLabel();
+moneylabel.setText("Date:");
+moneylabel.setBounds(275, 390, 30, 25);
+moneylabel.setFont(new Font("Arial", Font.PLAIN, 12));
+moneylabel.setForeground(Color.white);
+moneylabel.setVisible(false);
+
+incomeText.setPreferredSize(new Dimension(20, 30));
+incomeText.setCaretColor(Color.black); //cursor color
+incomeText.setText("100.00"); //starting text
+incomeText.setEditable(true);
+incomeText.setBounds(185, 390, 80, 25);
+incomeText.setVisible(false);
+
+
+
+
+
 
 //add to window
 this.add(convertButton);
@@ -158,6 +226,16 @@ this.add(homeButton);
 this.add(convertToLabel);
 this.add(currSelectTwo);
 this.add(currResultLabel);
+
+this.add(incomeText);
+this.add(incomeLabel);
+this.add(incomeType);
+this.add(moneylabel);
+this.add(inlabel);
+this.add(enterIncome);
+this.add(incomemonth);
+this.add(incomeyear);
+
 //define start window
 this.setSize(455, 600); 
 this.setTitle("E-Wallet"); 
@@ -184,7 +262,17 @@ this.setVisible(true);
 		}
 		if(e.getSource()==addIncome) { 
 			System.out.println("you hit the income button");
+			 try {
+				incomeWindow();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
+			}
+		if(e.getSource()== enterIncome) {
+			System.out.println("You entered the " + incomeType.getSelectedItem() + " type income with $" + incomeText.getText() + " on " + incomemonth.getSelectedItem() + "/" + incomeyear.getText() + ".");
+		}
+		// want to enter information into an array, then enter it into a display into viewer 
 		if(e.getSource()==currencyConv) { 
 			System.out.println("you hit the currency button");
 			try {
@@ -239,6 +327,15 @@ this.setVisible(true);
 		currSelectTwo.setVisible(false);
 		convertButton.setVisible(false);
 		currResultLabel.setVisible(false);
+	
+		incomeLabel.setVisible(false);
+		incomeText.setVisible(false);
+		incomeType.setVisible(false);
+		moneylabel.setVisible(false);
+		inlabel.setVisible(false);
+		enterIncome.setVisible(false);
+		incomemonth.setVisible(false);
+		incomeyear.setVisible(false);
 
 	}
 	
@@ -259,6 +356,29 @@ this.setVisible(true);
 		currSelectOne.setVisible(true);
 		currSelectTwo.setVisible(true);
 		convertButton.setVisible(true);
+	}
+	
+	public static void incomeWindow() throws IOException {
+				//hiding original screen
+				viewSummary.setVisible(false);
+				currencyConv.setVisible(false);
+				addExpense.setVisible(false);
+				addIncome.setVisible(false);
+				titleLabel.setVisible(false);
+				chooseLabel.setVisible(false);
+
+			
+				//making income screen
+				incomeLabel.setVisible(true);
+				homeButton.setVisible(true);
+				moneylabel.setVisible(true);
+				incomeText.setVisible(true);
+				incomeType.setVisible(true);
+				inlabel.setVisible(true);
+				enterIncome.setVisible(true);
+				incomemonth.setVisible(true);
+				incomeyear.setVisible(true);
+	
 	}
 }
 
