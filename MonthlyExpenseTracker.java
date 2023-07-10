@@ -1,12 +1,20 @@
 import javax.swing.*;
+
+import MonthlyIncomeTracker.IncomeEntry;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class MonthlyExpenseTracker extends JFrame implements ActionListener {
     private JTextField numExpensesField;
     private JButton calculateButton;
-    public double totalExpense;
+    private JButton readFileButton;
+    public double totalExpense = 0.0;
+    public double amount = 0.0;
 
     public double getTotalExpense() {
         return totalExpense;
@@ -22,12 +30,17 @@ public class MonthlyExpenseTracker extends JFrame implements ActionListener {
         // Calculate Button
         calculateButton = new JButton("Calculate");
         calculateButton.addActionListener(this);
+        
+        // Read File Button
+        readFileButton = new JButton("Read File");
+        readFileButton.addActionListener(this);
 
         // Layout
         setLayout(new FlowLayout());
         add(numExpensesLabel);
         add(numExpensesField);
         add(calculateButton);
+        add(readFileButton);
 
         pack();
         setSize(850, 100);
@@ -38,6 +51,8 @@ public class MonthlyExpenseTracker extends JFrame implements ActionListener {
         if (e.getSource() == calculateButton) {
             calculateExpenses();
             generateReport();
+        } else if (e.getSource() == readFileButton) {
+        	readExpenseFile();
         }
     }
 
@@ -49,10 +64,30 @@ public class MonthlyExpenseTracker extends JFrame implements ActionListener {
         for (int i = 1; i <= numExpenses; i++) {
             String amountStr = JOptionPane.showInputDialog(null, "Enter the expense amount for expense #" + i + ":", "Expense Amount", JOptionPane.PLAIN_MESSAGE);
 
-            double amount = Double.parseDouble(amountStr);
+            amount = Double.parseDouble(amountStr);
 
             totalExpense += amount;
         }
+    }
+    
+    public void readExpenseFile() {
+    	
+    	 try {
+    	      File file = new File("ExpenseFile");
+    	      Scanner scnr = new Scanner(file);
+    	      scnr.useDelimiter("\n");
+    	      while (scnr.hasNextLine()) {
+    	    	  System.out.println("test");
+    	    	  amount = Double.parseDouble(scnr.nextLine());
+    	    	  totalExpense += amount;
+    	      }
+    	      System.out.println("Success!");
+    	      generateReport();
+    	      scnr.close();
+    	    } catch (FileNotFoundException e) {
+    	      System.out.println("An error occurred.");
+    	      e.printStackTrace();
+    	    }
     }
 
     public void generateReport() {

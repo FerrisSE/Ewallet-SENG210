@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class MonthlyIncomeTracker extends JFrame implements ActionListener {
     private JTextField incomeField;
@@ -13,7 +16,7 @@ public class MonthlyIncomeTracker extends JFrame implements ActionListener {
     private JComboBox<String> incomeTypeComboBox;
     public ArrayList<IncomeEntry> incomeEntries;
 
-    private static class IncomeEntry {
+    static class IncomeEntry {
         private String month;
         private String type;
         private double amount;
@@ -65,6 +68,10 @@ public class MonthlyIncomeTracker extends JFrame implements ActionListener {
         // Report Button
         JButton reportButton = new JButton("Generate Report");
         reportButton.addActionListener(this);
+        
+        // Read File Button
+        JButton fileButton = new JButton("Read File");
+        fileButton.addActionListener(this);
 
         // Layout
         setLayout(new FlowLayout());
@@ -76,6 +83,7 @@ public class MonthlyIncomeTracker extends JFrame implements ActionListener {
         add(monthComboBox);
         add(addButton);
         add(reportButton);
+        add(fileButton);
 
         pack();
         setVisible(true);
@@ -99,7 +107,32 @@ public class MonthlyIncomeTracker extends JFrame implements ActionListener {
             incomeField.setText("");
         } else if (e.getActionCommand().equals("Generate Report")) {
             generateReport();
+        } else if (e.getActionCommand().equals("Read File")){
+        	readIncomeFile();
         }
+    }
+    
+    public void readIncomeFile() {
+    	String month;
+    	String incomeType;
+    	String income;
+    	
+    	 try {
+    	      File file = new File("IncomeFile");
+    	      Scanner scnr = new Scanner(file);
+    	      scnr.useDelimiter(",");
+    	      while (scnr.hasNextLine()) {
+    	    	  income = scnr.next();
+    	    	  incomeType = scnr.next();
+    	    	  month = scnr.next();
+    	    	  incomeEntries.add(new IncomeEntry(month, incomeType, Double.parseDouble(income)));
+    	      }
+    	      System.out.println("Success!");
+    	      scnr.close();
+    	    } catch (FileNotFoundException e) {
+    	      System.out.println("An error occurred.");
+    	      e.printStackTrace();
+    	    }
     }
 
     public void generateReport() {
